@@ -61,15 +61,3 @@ Optional enhancements planned:
 | `resume`     | Link to download my resume PDF                  |
 | `social`     | Display social media links                      |
 | `clear`      | Clear the terminal window                       |
-
----
-
-
-//## 🚀 Installation
-
-//To run locally:
-
-//```bash
-//git clone https://github.com/vedkat13/terminal-portfolio.git
-//cd terminal-portfolio
-//open index.html
