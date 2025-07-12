@@ -5,17 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vedant Katruwar | Portfolio Terminal</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Ensure ASCII art displays correctly */
+    pre.cat {
+      white-space: pre;
+      font-family: monospace;
+      font-size: x-small;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 <body>
   <div class="terminal">
+    <pre class="cat" id="ascii-art"></pre>
+
+    Type <span>'help'</span> to view available commands.
+
     <div id="output"></div>
     <div class="input-line">
-      
       <span class="prompt">vedant@portfolio:~$</span>
       <input type="text" id="input" autofocus autocomplete="off"/>
     </div>
   </div>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch('../ascii-logo.txt')
+        .then(response => {
+          if (!response.ok) throw new Error("ASCII logo file not found.");
+          return response.text();
+        })
+        .then(data => {
+          document.getElementById('ascii-art').textContent = data;
+        })
+        .catch(error => {
+          console.error(error);
+          document.getElementById('ascii-art').textContent = "[ ASCII Logo could not be loaded ]";
+        });
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
