@@ -6,29 +6,44 @@
   <title>Vedant Katruwar | Portfolio Terminal</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Ensure ASCII art displays correctly */
+    
     pre.cat {
       white-space: pre;
       font-family: monospace;
       font-size: x-small;
       margin: 0;
       padding: 0;
+      color: #33ff33;
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
   <div class="terminal">
+      <h3 class="glow">ACCESS GRANTED</h3>
+<pre class="white">Welcome to Vedant's Portfolio Terminal.© 2025 Vedant Katruwar
+<spam class="red">Warning</spam>: Prolonged use may cause excessive curiosity.
+    </pre>
     <pre class="cat" id="ascii-art"></pre>
 
-    Type <span>'help'</span> to view available commands.
+    Type <span class="glow">'help'</span> to view available commands.
 
     <div id="output"></div>
     <div class="input-line">
-      <span class="prompt">vedant@portfolio:~$</span>
-      <input type="text" id="input" autofocus autocomplete="off"/>
-    </div>
+  <span class="prompt">vedant@portfolio:~$</span>
+  <span id="text-content"></span>
+  <span class="cursor"></span>
+  <input
+    type="text"
+    id="input"
+    autofocus
+    autocomplete="off"
+    spellcheck="false"
+    autocorrect="off"
+    autocapitalize="off"
+  />
+</div>
   </div>
-
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       fetch('../ascii-logo.txt')
@@ -45,6 +60,7 @@
         });
     });
   </script>
-  <script src="script.js"></script>
+<script src="script.js"></script>
+<script src="commands.js"></script>
 </body>
 </html>

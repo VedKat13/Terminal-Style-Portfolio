@@ -1,133 +1,163 @@
+// ==== Config Links ====
 var twitter   = "https://x.com/VedantKatruwar";
 var linkedin  = "https://www.linkedin.com/in/vedant-katruwar/";
 var instagram = "https://www.instagram.com/vedant2k5/";
 var github    = "https://github.com/vedkat13/";
 var email     = "mailto:ukvedant95@gmail.com";
+
+// ==== DOM Elements ====
 const input = document.getElementById("input");
 const output = document.getElementById("output");
+const promptSpan = document.querySelector(".prompt");
+const textContent = document.getElementById("text-content");
+
+const DEFAULT_PROMPT = "vedant@portfolio:~$";
+let currentPrompt = DEFAULT_PROMPT;
+
+// ==== State ====
+let waitingForPassword = false;
+const SECRET_PASSWORD_HASH = "4dcab0d82ccb503fea0f6f7a4d63440981cf2755d9fba55733489e8c8091fdf5";
+const SECRET_URL = "https://youtu.be/hvL1339luv0?si=OWr-MdwdC4BuHCLr";
 
 let history = [];
 let historyIndex = -1;
 
-const commands = {
-help: `
-<pre>
-help
-whoisvedant
-skills
-projects
-education
-contact
-resume
-social
-clear
-</pre>
-`,
+// ==== Update Prompt ====
+function updatePrompt() {
+    promptSpan.textContent = currentPrompt;
+}
 
-  whoisvedant: `
-<br>
-Hey, I'm Vedant! 👋
-I'm a computer engineering student at COEP Technological University, currently in my second year.
-I'm building my skills in full-stack web development, UI/UX design, and mobile app development.
-Alongside my academic journey, I'm working on real-world projects that combine creativity and code -
-like personal portfolio sites, productivity apps, and publishing tools for WordPress creators.
-I'm passionate about building things that are clean, functional, and user-centric.
-My long-term vision is to run my own tech business, and I'm laying the foundation by learning design,
-development, and deployment from the ground up.
-This terminal website is one of my creative side projects, blending my love for design with development.
-<br>
-`,
+// ==== Print to Output ====
+function printToOutput(html) {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    output.appendChild(div);
+    window.scrollTo(0, document.body.scrollHeight);
+}
 
-  skills: `
-<br>
-Languages: HTML, CSS, JavaScript, Java
-Frameworks: React, Firebase
-Tools: Git, Figma, VS Code
-Areas: UI/UX, Web Development, Mobile Apps
-<br>
-`,
+// ==== Click anywhere to focus ====
+document.addEventListener("click", () => {
+    input.focus();
+});
 
-  projects: `
-<br>
-1. Resume Builder - <a href="https://github.com/vedkat13/resume-builder" target="_blank">GitHub Repo</a>
-2. HabitUp App - Firebase project
-3. WordPress Manager App - In progress
-<br>
-`,
+// ==== Mirror typed characters ====
+input.addEventListener("input", () => {
+    textContent.textContent = input.value;
+});
 
-  education: `
-<br>
-B.Tech in Computer Engineering, COEP Technological University (2022 - 2026)
-<br>
-`,
+// ==== Run Command ====
+function runCommand(cmd) {
+    if (cmd === "") return;
 
-  contact: `
-<br>
-Email: <a href="${email}" target="_blank">ukvedant95@gmail.com</a>
-LinkedIn: <a href="${linkedin}" target="_blank">${linkedin}</a>
-GitHub: <a href="${github}" target="_blank">${github}</a>
-<br>
-`,
+    printToOutput(`<span class="prompt">${DEFAULT_PROMPT}</span> ${cmd}`);
 
-  resume: `
-<br>
-<a href="./assets/resume.pdf" target="_blank">Click here to view my resume</a>
-<br>
-`,
+    if (cmd === "clear") {
+        output.innerHTML = "";
+        return;
+    }
 
-  social: `
-<br>
-X           <a href="${twitter}" target="_blank">${twitter}</a>
-LinkedIn    <a href="${linkedin}" target="_blank">${linkedin}</a>
-Instagram   <a href="${instagram}" target="_blank">${instagram}</a>
-GitHub      <a href="${github}" target="_blank">${github}</a>
-<br>
-`
-};
+   if (cmd === "secret") {
+    waitingForPassword = true;
+    currentPrompt = "Enter password: ";
+    input.type = "text";
+    input.dataset.realvalue = "";
+    input.value = "";
+    textContent.textContent = "";
+    updatePrompt();
+    return;
+}
 
 
-input.addEventListener("keydown", function (e){
-    if(e.key === "Enter"){
+    if (cmd === "sudo") {
+        printToOutput(`<span class="redglow">Not an admin.</span> Caught you!...`);
+        setTimeout(() => {
+            window.open(SECRET_URL, '_blank');
+        }, 1000);
+        return;
+    }
+
+    const response = commands[cmd] || `Command not found: <span class="redglow">${cmd}</span>. Try <span class="glow">help</span>.`;
+    printToOutput(response);
+}
+
+// ==== Check Secret Password ====
+function checkSecretPassword(inputPassword) {
+    const hash = CryptoJS.SHA256(inputPassword).toString();
+
+    if (hash === SECRET_PASSWORD_HASH) {
+        printToOutput(`✅ Password correct. Type <span class="redglow">sudo</span> to unlock the secret.`);
+    } else {
+        printToOutput(`❌ Incorrect password.`);
+    }
+
+    waitingForPassword = false;
+    input.type = "text";
+    currentPrompt = DEFAULT_PROMPT;
+    updatePrompt();
+}
+
+// ==== Handle Key Events ====
+input.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
         const cmd = input.value.trim();
-        if(cmd){
+
+        if (waitingForPassword) {
+            const realPassword = input.dataset.realvalue;
+            checkSecretPassword(realPassword);
+            input.dataset.realvalue = "";
+            input.value = "";
+            textContent.textContent = ""; // Clear the visible fake typed text
+            return;
+        } else if (cmd) {
             history.push(cmd);
             historyIndex = history.length;
             runCommand(cmd);
         }
-        input.value = "";
-        contentSpan.textContent = "";
 
+        input.value = "";
+        textContent.textContent = ""; // Clear the visible fake typed text
     }
-    if(e.key === "ArrowUp"){
-        if(historyIndex > 0){
+
+    if (e.key === "ArrowUp") {
+        if (historyIndex > 0) {
             historyIndex--;
             input.value = history[historyIndex];
-            contentSpan.textContent = input.value;
+            textContent.textContent = input.value;
         }
-            e.preventDefault();
+        e.preventDefault();
     }
+
     if (e.key === "ArrowDown") {
-    if (historyIndex < history.length - 1) {
-      historyIndex++;
-      input.value = history[historyIndex];
-      contentSpan.textContent = input.value;
-    } else {
-      historyIndex = history.length;
-      input.value = "";
-      contentSpan.textContent = "";
+        if (historyIndex < history.length - 1) {
+            historyIndex++;
+            input.value = history[historyIndex];
+            textContent.textContent = input.value;
+        } else {
+            historyIndex = history.length;
+            input.value = "";
+            textContent.textContent = "";
+        }
+        e.preventDefault();
     }
-    e.preventDefault();
-  }
 });
 
-function runCommand(cmd){
-if(cmd === "clear"){
-    output.innerHTML = "";
-    return;
-}
 
-const response = commands[cmd] || `Command not found: ${cmd}. Try 'help'.`;
-output.innerHTML += `<div><span class="prompt">vedant@portfolio:~$</span> ${cmd}</div>`;
-output.innerHTML += `<div>${response}</div>`;
-window.scrollTo(0, document.body.scrollHeight);
-}
+// ==== Mask password as stars ====
+input.addEventListener("input", function (e) {
+    if (waitingForPassword) {
+        let currentValue = input.value;
+        let realValue = input.dataset.realvalue || "";
+
+        if (currentValue.length < realValue.length) {
+            realValue = realValue.slice(0, currentValue.length);
+        } else {
+            let newChar = currentValue.slice(realValue.length);
+            realValue += newChar;
+        }
+
+        input.dataset.realvalue = realValue;
+        input.value = "*".repeat(realValue.length);
+    }
+});
+console.log('You are SHARP!!');
+console.log('Decrypt SHA256 using any online website: 4dcab0d82ccb503fea0f6f7a4d63440981cf2755d9fba55733489e8c8091fdf5');
