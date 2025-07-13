@@ -1,63 +1,65 @@
-# Terminal Portfolio - Vedant Katruwar
+# Terminal Portfolio for Vedant Katruwar
 
-> **A command-line-inspired personal portfolio website by Vedant Katruwar.**
-
----
-
-## 🚀 Project Overview
-
-This project is a **terminal-style personal portfolio** designed to replicate the look and feel of a command-line interface in the browser.
-
-It allows visitors to interact with various commands to discover:
-
-- **About Me**
-- **Skills & Tech Stack**
-- **Projects & Portfolio Links**
-- **Education**
-- **Contact Information**
-- **Social Media Profiles**
-- **Downloadable Resume**
-
-Built purely with **HTML, CSS, and JavaScript**—no frameworks required. The website simulates typing, outputs terminal responses, and offers a unique and engaging user experience.
+This repository contains the source code for a personal portfolio website designed to emulate a classic terminal experience. Visitors can interact with the terminal commands to learn about my skills, projects, education, and contact details.
 
 ---
 
-## 🎯 Why I Built This
+## 🎯 Project Objective
 
-As a Computer Engineering student at COEP Technological University, I wanted a portfolio that:
+To deliver a distinctive, developer-centric online portfolio that:
 
-- Showcases technical proficiency in web development
-- Differentiates me from standard portfolio templates
-- Reflects my passion for tech and UI/UX
-- Serves as a fun, interactive project to learn DOM manipulation, events, and styling
-
----
-
-## 🛠️ Tech Stack
-
-- HTML5
-- CSS3
-- JavaScript
-
-Optional enhancements planned:
-
-- Typing animation
-- Command history navigation
-- Mobile responsiveness
-- Easter eggs for hidden commands
+- Reflects a command-line aesthetic.
+- Allows users to interact via commands (e.g., `help`, `skills`, `projects`, `contact`).
+- Includes an easter egg password-protected command for engagement.
+- Demonstrates proficiency in HTML, CSS, JavaScript, and modern web design practices.
 
 ---
 
-## 📝 Available Commands
+## ✨ Features
 
-| Command      | Description                                     |
-|--------------|-------------------------------------------------|
-| `help`       | List available commands                         |
-| `about`      | Short introduction about me                     |
-| `skills`     | Display technical skills and tools              |
-| `projects`   | List key projects with links                    |
-| `education`  | Academic background                             |
-| `contact`    | Email, LinkedIn, and GitHub info                |
-| `resume`     | Link to download my resume PDF                  |
-| `social`     | Display social media links                      |
-| `clear`      | Clear the terminal window                       |
+- **Fully Responsive Terminal Interface**
+  - Simulates a real terminal prompt.
+  - Smooth blinking cursor and input focus.
+- **Command Handling**
+  - Commands such as:
+    - `help`: Lists all available commands.
+    - `whoisvedant`: Short introduction.
+    - `skills`: My tech stack.
+    - `projects`: Key projects.
+    - `contact`: Reach out to me.
+    - `resume`: View/download resume.
+    - `social`: Social media links.
+    - `secret`: Triggers password prompt for a hidden feature.
+    - `clear`: Clears terminal output.
+- **Easter Egg**
+  - A `secret` command with a password input.
+  - (Password hash stored in JavaScript to provide minimal obfuscation.)
+
+---
+
+## 🛠️ Technology Stack
+
+- **Frontend:**
+  - HTML5
+  - CSS3
+  - JavaScript (Vanilla)
+  - [CryptoJS](https://cdnjs.com/libraries/crypto-js) (for password hashing)
+- **Hosting:**
+  - Deployable on GitHub Pages, Netlify, Vercel, or any static host.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- A modern web browser (Chrome, Firefox, Edge)
+- Basic knowledge of HTML/CSS/JS if you wish to customize
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/VedKat13/Terminal-Style-Portfolio
+   cd terminal-portfolio

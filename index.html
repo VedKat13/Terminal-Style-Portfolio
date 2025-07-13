@@ -46,7 +46,7 @@
   </div>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      fetch('../ascii-logo.txt')
+      fetch('ascii-logo.js')
         .then(response => {
           if (!response.ok) throw new Error("ASCII logo file not found.");
           return response.text();
