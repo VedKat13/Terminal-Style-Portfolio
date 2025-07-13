@@ -1,35 +1,47 @@
-body {
-  background: #000c03;
-  font-family: 'Courier New', monospace;
+html, body {
   margin: 0;
-  padding: 20px;
-  zoom: 1;
-  }
-.white{
-    color: #ffffffb0;
-    line-height: 1;
+  padding: 0;
+  background: #000c03;
+  color: #229bff;
+  font-family: 'Courier New', monospace;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
 }
+
+.white {
+  color: #ffffffb0;
+  line-height: 1.2;
+}
+
 ::selection {
   background: hsl(184, 99%, 30%);
   color: #350053;
 }
 
 .terminal {
-    color: #229bff;
   max-width: 900px;
+  width: 100%;
   margin: auto;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .prompt {
   color: #33ff33;
   margin-right: 5px;
 }
-
+@media (max-width: 512px) {
+  .white {
+    font-size: 8px;
+  }
+}
 .input-line {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   gap: 2px;
+  width: 100%;
 }
 
 .input-line .prompt {
@@ -39,47 +51,46 @@ body {
 #input {
   background: transparent;
   border: none;
-  color: inherit;
   font: inherit;
   outline: none;
   width: 100%;
+  caret-color: transparent;
+  color: transparent;
 }
 
 a {
   color: #33ffcc;
   text-decoration: underline;
 }
-.line{
-    line-height: 1.5;
+
+.line {
+  line-height: 1.5;
 }
+
 .glow {
   color: #33ff33;
   font-weight: bold;
   text-shadow: 0 0 5px #33ff33, 0 0 10px #33ff33;
 }
+
 .redglow {
   color: #ff3333;
   font-weight: bold;
   text-shadow: 0 0 5px #ff7433, 0 0 10px #ff3333;
 }
+
 .red {
   color: #ff3333;
   font-weight: bold;
-  }
-
-#input {
-  caret-color: transparent;
-  color: transparent; /* hide text if using mirrored span */
 }
 
-/* Smooth blinking cursor block */
 .cursor {
   display: inline-block;
   width: 8px;
   height: 1em;
   background: #33ff33;
   animation: blink 1.2s linear infinite;
-  }
+}
 
 @keyframes blink {
   0% {
@@ -92,6 +103,8 @@ a {
     opacity: 1;
   }
 }
-h3{
-    line-height: 0%;
+
+h3 {
+  line-height: 1;
+  margin: 8px 0;
 }
