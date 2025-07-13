@@ -49,7 +49,7 @@ input.addEventListener("input", () => {
 function runCommand(cmd) {
     if (cmd === "") return;
 
-    printToOutput(`<span class="prompt">${DEFAULT_PROMPT}</span> ${cmd}`);
+printAnimated(`<span class="prompt">${DEFAULT_PROMPT}</span> ${cmd}`, 10);
 
     if (cmd === "clear") {
         output.innerHTML = "";
@@ -76,8 +76,10 @@ function runCommand(cmd) {
         return;
     }
 
-    const response = commands[cmd] || `Command not found: <span class="redglow">${cmd}</span>. Try <span class="glow">help</span>.`;
-    printToOutput(response);
+    const response = commands[cmd] || 
+    `Command not found: <span class="redglow">${cmd}</span>. Try <span class="glow">help</span>.`;
+
+printAnimated(response, 50);
 }
 
 // ==== Check Secret Password ====
@@ -161,3 +163,28 @@ input.addEventListener("input", function (e) {
 });
 console.log('You are SHARP!!');
 console.log('Decrypt SHA256 using any online website: 4dcab0d82ccb503fea0f6f7a4d63440981cf2755d9fba55733489e8c8091fdf5');
+
+function printAnimated(html, delay = 50) {
+  const div = document.createElement("div");
+  output.appendChild(div);
+
+  // Split into lines
+  const lines = html.split(/<br\s*\/?>/i);
+  let i = 0;
+
+  function nextLine() {
+    if (i >= lines.length) {
+      window.scrollTo(0, document.body.scrollHeight);
+      return;
+    }
+
+    // Append the next line
+    div.innerHTML += lines[i] + "<br>";
+    i++;
+
+    window.scrollTo(0, document.body.scrollHeight);
+    setTimeout(nextLine, delay);
+  }
+
+  nextLine();
+}
