@@ -3,13 +3,31 @@ var twitter   = "https://x.com/VedantKatruwar";
 var linkedin  = "https://www.linkedin.com/in/vedant-katruwar/";
 var instagram = "https://www.instagram.com/vedant2k5/";
 var github    = "https://github.com/vedkat13/";
-var email     = "mailto:ukvedant95@gmail.com";
+var email1     = "mailto:ukvedant95@gmail.com";
+var email2     = "mailto:katruwarvu23.comp@coeptech.ac.in";
+
+
 
 // ==== DOM Elements ====
 const input = document.getElementById("input");
 const output = document.getElementById("output");
 const promptSpan = document.querySelector(".prompt");
-const textContent = document.getElementById("text-content");
+// const textContent = document.getElementById("text-content");
+
+  function copyEmail(elementId) {
+    const emailText = document.getElementById(elementId).textContent;
+
+    navigator.clipboard.writeText(emailText)
+      .then(() => {
+        document.getElementById("copyMsg").style.display = "block";
+        setTimeout(() => {
+          document.getElementById("copyMsg").style.display = "none";
+        }, 2000);
+      })
+      .catch(err => {
+        console.error("Failed to copy email:", err);
+      });
+  }
 
 const DEFAULT_PROMPT = "vedant@portfolio:~$";
 let currentPrompt = DEFAULT_PROMPT;
@@ -41,9 +59,9 @@ document.addEventListener("click", () => {
 });
 
 // ==== Mirror typed characters ====
-input.addEventListener("input", () => {
-    textContent.textContent = input.value;
-});
+// input.addEventListener("input", () => {
+//     textContent.textContent = input.value;
+// });
 
 // ==== Run Command ====
 function runCommand(cmd) {
@@ -69,10 +87,10 @@ printAnimated(`<span class="prompt">${DEFAULT_PROMPT}</span> ${cmd}`, 10);
 
 
     if (cmd === "sudo") {
-        printToOutput(`<span class="redglow">Not an admin.</span> Caught you!...`);
+        printToOutput(`<span class="redglow">Not an admin.</span> GOTCHA!...`);
         setTimeout(() => {
             window.open(SECRET_URL, '_blank');
-        }, 1000);
+        }, 1500);
         return;
     }
 
@@ -87,7 +105,7 @@ function checkSecretPassword(inputPassword) {
     const hash = CryptoJS.SHA256(inputPassword).toString();
 
     if (hash === SECRET_PASSWORD_HASH) {
-        printToOutput(`✅ Password correct. Type <span class="redglow">sudo</span> to unlock the secret.`);
+        printToOutput(`✅ Password correct. Use the command <span class="redglow">sudo</span> only if you are an Admin.`);
     } else {
         printToOutput(`❌ Incorrect password.`);
     }
