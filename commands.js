@@ -70,7 +70,7 @@ GitHub: <a href="${github}" target="_blank" style="text-decoration: none;">GitHu
 
 resume: `
 <div class="line">
-<a href="./assets/resume.pdf" target="_blank">Click here to view my resume</a><span class="red">(CURRENTLY NOT AVAILABLE)</span>
+<a href="SUPERSET_RESUME.pdf" target="_blank">Click here to view my resume</a>
 </div>
 `,
 
