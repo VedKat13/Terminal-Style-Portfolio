@@ -98,7 +98,7 @@ Sketch Artist (Watch for yourself -> <a class="glow" href="${insta2}" target="_b
 
 cat: `
 <div class="line">
-Yeah I cats too!<br>
+Yeah I like cats too!<br>
 <div
   style="
     width: 189px;
