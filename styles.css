@@ -118,6 +118,12 @@ a {
   text-shadow: 0 0 5px #33ff33, 0 0 10px #33ff33;
 }
 
+.whiteglow {
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 0 0 5px #33ff33, 0 0 10px #33ff33;
+}
+
 .redglow {
   color: #ff3333;
   font-weight: bold;

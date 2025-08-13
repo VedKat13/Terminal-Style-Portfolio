@@ -11,6 +11,30 @@ help: `
   <div class="help-line"><span class="glow">social</span><span>Social media profiles</span></div>
   <div class="help-line"><span class="redglow">secret</span><span>What can be the secret?</span></div>
   <div class="help-line"><span class="glow">clear</span><span>Clear the terminal screen</span></div>
+  <div class="help-line"><span class="whiteglow">chatgpt [query]</span><span>Ask ChatGPT a question</span></div>
+
+</div>
+`,
+
+chatgpt: `
+<div class="line">
+Usage: <span class="glow">chatgpt &lt;your question&gt;</span><br>
+Opens ChatGPT in a new tab with your query.
+</div>
+`,
+
+ls: `
+<div class="help">
+  <div class="help-line"><span class="glow">help</span><span>List all available commands</span></div>
+  <div class="help-line"><span class="glow">whoisvedant</span><span>Short intro about me</span></div>
+  <div class="help-line"><span class="glow">skills</span><span>Show my tech stack and tools</span></div>
+  <div class="help-line"><span class="glow">projects</span><span>Display key projects</span></div>
+  <div class="help-line"><span class="glow">education</span><span>My academic background</span></div>
+  <div class="help-line"><span class="glow">contact</span><span>Ways to reach me</span></div>
+  <div class="help-line"><span class="glow">resume</span><span>Download or view my resume</span></div>
+  <div class="help-line"><span class="glow">social</span><span>Social media profiles</span></div>
+  <div class="help-line"><span class="redglow">secret</span><span>What can be the secret?</span></div>
+  <div class="help-line"><span class="glow">clear</span><span>Clear the terminal screen</span></div>
 </div>
 `,
 
@@ -57,6 +81,37 @@ Core Focus of the Course: Data Structures, Algorithms, Systems Programming, Web 
 </div>
 `,
 
+BOD: `
+<div class="line">
+13/04/2005<br>
+Wish me on my birthday!
+</div>
+`,
+
+intrest: `
+<div class="line">
+Music. (humans change music don't) <br>
+Table Tennis (I bet i can beat you in TT match!) <br>
+Sketch Artist (Watch for yourself -> <a class="glow" href="${insta2}" target="_blank" >@iamartguy</a> on instagram)
+</div>
+`,
+
+cat: `
+<div class="line">
+Yeah I cats too!<br>
+<div
+  style="
+    width: 189px;
+    height: 189px;
+    background-image: url('https://images.pexels.com/photos/6869636/pexels-photo-6869636.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #ccc;
+  ">
+</div>
+</div>
+`,
 
 contact: `
 <div class="line">
@@ -81,11 +136,5 @@ social: `
 3. <a class="glow" href="${instagram}" target="_blank">Instagram</a><br>
 4. <a class="glow" href="${github}" target="_blank">Github</a>
 </div>
-`,
-
-// sudo: `
-// <div class="line">
-// Caught you!...
-// </div>
-// `
+`
 };

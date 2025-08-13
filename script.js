@@ -5,6 +5,7 @@ var instagram = "https://www.instagram.com/vedant2k5/";
 var github    = "https://github.com/vedkat13/";
 var email1     = "mailto:ukvedant95@gmail.com";
 var email2     = "mailto:katruwarvu23.comp@coeptech.ac.in";
+var insta2 = "https://www.instagram.com/iamartguy/";
 
 
 
@@ -36,6 +37,7 @@ let currentPrompt = DEFAULT_PROMPT;
 let waitingForPassword = false;
 const SECRET_PASSWORD_HASH = "4dcab0d82ccb503fea0f6f7a4d63440981cf2755d9fba55733489e8c8091fdf5";
 const SECRET_URL = "https://youtu.be/hvL1339luv0?si=OWr-MdwdC4BuHCLr";
+const REPO_URL = "https://github.com/VedKat13/Terminal-Style-Portfolio";
 
 let history = [];
 let historyIndex = -1;
@@ -93,6 +95,29 @@ printAnimated(`<span class="prompt">${DEFAULT_PROMPT}</span> ${cmd}`, 10);
         }, 1500);
         return;
     }
+
+    if (cmd === "sudo") {
+        printToOutput(`<span Redirecting to the project repository...`);
+        setTimeout(() => {
+            window.open(SECRET_URL, '_blank');
+        }, 1500);
+        return;
+    }
+
+    // === ChatGPT Redirect ===
+    if (cmd.startsWith("chatgpt ")) {
+    const query = cmd.replace("chatgpt ", "").trim();
+    if (query) {
+        const url = `https://chatgpt.com/?q=${encodeURIComponent(query)}`;
+        printToOutput(`🔍 Searching ChatGPT for: <span class="glow">${query}</span>`);
+        setTimeout(() => {
+            window.open(url, "_blank");
+        }, 800);
+    } else {
+        printToOutput("❌ Please enter a query. Example: chatgpt how to center a div");
+    }
+    return;
+}
 
     const response = commands[cmd] || 
     `Command not found: <span class="redglow">${cmd}</span>. Try <span class="glow">help</span>.`;
