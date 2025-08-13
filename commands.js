@@ -24,6 +24,12 @@ Opens ChatGPT in a new tab with your query.
 </div>
 `,
 
+job: `
+<div class="line">
+<span class="glow">Job</span> not found. <span class="redglow">sed</span>
+</div>
+`,
+
 ls: `
 <div class="help">
   <div class="help-line"><span class="glow">help</span><span>List all available commands</span></div>
