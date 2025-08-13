@@ -99,7 +99,7 @@ printAnimated(`<span class="prompt">${DEFAULT_PROMPT}</span> ${cmd}`, 10);
     if (cmd === "sudo") {
         printToOutput(`<span Redirecting to the project repository...`);
         setTimeout(() => {
-            window.open(SECRET_URL, '_blank');
+            window.open(REPO_URL, '_blank');
         }, 1500);
         return;
     }

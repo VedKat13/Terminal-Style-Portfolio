@@ -24,6 +24,13 @@ Opens ChatGPT in a new tab with your query.
 </div>
 `,
 
+repo: `
+<div class="line">
+Redirecting...
+</div>
+`,
+
+
 ls: `
 <div class="help">
   <div class="help-line"><span class="glow">help</span><span>List all available commands</span></div>
